@@ -19,7 +19,7 @@ export abstract class SignallingBase implements Signalling {
         this.eventHandlers[eventName].push(handlerCallback);
     }
 
-    protected dispatch (eventName: AwEventName, event: AwEvent): void {
+    protected handle (eventName: AwEventName, event: AwEvent): void {
         this.eventHandlers[eventName].forEach((handlerCallback) => handlerCallback(event));
     }
 }

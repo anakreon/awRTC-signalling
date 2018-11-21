@@ -20,11 +20,11 @@ export class LocalStorageSignalling extends SignallingBase {
             if (this.amIEventRecipient(key)) {
                 const value = JSON.parse(newValue);
                 if (this.isEventType(key, 'offer')) {
-                    this.dispatch('offer', { peerId: value.from, offer: value.data });
+                    this.handle('offer', { peerId: value.from, offer: value.data });
                 } else if (this.isEventType(key, 'answer')) {
-                    this.dispatch('answer', { peerId: value.from, answer: value.data });
+                    this.handle('answer', { peerId: value.from, answer: value.data });
                 } else if (this.isEventType(key, 'candidate')) {
-                    this.dispatch('newCandidate', { peerId: value.from, iceCandidate: value.data });
+                    this.handle('newCandidate', { peerId: value.from, iceCandidate: value.data });
                 }
             }
         });
@@ -42,7 +42,7 @@ export class LocalStorageSignalling extends SignallingBase {
         if (!peerList.includes(peerId)) {
             peerList.push(peerId);
             this.setCurrentPeerList(peerList);
-            this.dispatch('peerList', { peerList });
+            this.handle('peerList', { peerList });
         }
     }
     private getCurrentPeerList (): string[] {
