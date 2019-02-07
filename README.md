@@ -1,6 +1,6 @@
 # awRTC-signalling
 
-A NPM package that implements signalling for awRTC.
+NPM package that implements signalling for awRTC.
 
 ## Installing
 
